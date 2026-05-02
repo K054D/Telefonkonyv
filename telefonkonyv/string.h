@@ -1,0 +1,27 @@
+#ifndef STRING_H_INCLUDED
+#define STRING_H_INCLUDED
+
+class String{
+    #include <iostream>
+
+/**
+ * String osztály.
+ * A pData-ban vannak a karakterek (a lezáró nullával együtt),
+ * len a hossz.A hosszba nem számít bele a lezáró nulla.
+ */
+class String {
+    char *adat;    ///< pointer az adatra
+    size_t hossz;     ///< hossz lezáró nulla nélkül
+public:
+
+    String() : adat(nullptr), hossz(0) {}
+    String(const char* txt) : adat(nullptr), hossz(0) {}
+    String(const String& rhs) : adat(nullptr), hossz(0) {}
+    ~String() {}
+
+    String& operator=(const String& rhs) { return *this; }
+
+    const char* c_str() const { return adat; }
+};
+
+#endif // STRING_H_INCLUDED
