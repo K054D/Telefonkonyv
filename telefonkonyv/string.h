@@ -1,8 +1,7 @@
 #ifndef STRING_H_INCLUDED
 #define STRING_H_INCLUDED
 
-class String{
-    #include <iostream>
+#include <iostream>
 
 /**
  * String osztály.
