@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1777892242 source:d:\bme\2. félév\prog2\nhf-git\telefonkonyv\telefonkonyv\main.cpp
+	<iostream>
+	"telefonkonyv.h"
+
+1777892242 d:\bme\2. félév\prog2\nhf-git\telefonkonyv\telefonkonyv\telefonkonyv.h
+	"kontakt.h"
+
+1777892242 d:\bme\2. félév\prog2\nhf-git\telefonkonyv\telefonkonyv\kontakt.h
+	"string.h"
+	<iostream>
+
+1777892242 d:\bme\2. félév\prog2\nhf-git\telefonkonyv\telefonkonyv\string.h
+	<iostream>
+

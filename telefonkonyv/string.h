@@ -3,11 +3,7 @@
 
 #include <iostream>
 
-/**
- * String osztály.
- * A pData-ban vannak a karakterek (a lezáró nullával együtt),
- * len a hossz.A hosszba nem számít bele a lezáró nulla.
- */
+
 class String {
     char *adat;    ///< pointer az adatra
     size_t hossz;     ///< hossz lezáró nulla nélkül
