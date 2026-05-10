@@ -12,9 +12,9 @@ public:
     String() : adat(nullptr), hossz(0) {}
     String(const char* txt) : adat(nullptr), hossz(0) {}
     String(const String& rhs) : adat(nullptr), hossz(0) {}
-    ~String() {}
+    ~String() { delete[] adat;}
 
-    String& operator=(const String& rhs) { return *this; }
+    String& operator=(const String& rhs);
 
     const char* c_str() const { return adat; }
 };
