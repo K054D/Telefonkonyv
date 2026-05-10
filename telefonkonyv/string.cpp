@@ -7,35 +7,26 @@
 using std::cin;
 using std::ios_base;
 
-/*/// Konstruktor: egy char karakterbõl (createStrFromChar)
+// Konstruktor: egy char karakterbõl (createStrFromChar)
 String::String(char ch) {
-   // Meghatározzuk a hosszát
     len = 1;
-    // Lefoglalunk a helyet a hossznak + a lezaró nullának
     adat = new char[len+1];
-    // Betesszük a karaktert
     adat[0] = ch;
     adat[1] = '\0';
 }
-*/
+
 
 // Konstruktor: egy nullával lezárt char sorozatból (createStringFromCharStr)
 String::String(const char *p) {
-    // Meghatározzuk a hosszát
     len = strlen(p);
-    // Helyet foglalunk
     adat = new char[len+1];
-    // Bemásoljuk a stringet, ami le van zárva 0-val így használható az strcpy is
     strcpy(adat, p);
 }
 
 // Másoló konstruktor
 String::String(const String& s1) {
-    // Meghatározzuk a hosszát
     len = s1.len;
-    // Helyet foglalunk
     adat = new char[len+1];
-    // Bemásoljuk a stringet, ami le van zárva 0-val így használható az strcpy is
     strcpy(adat, s1.adat);
 }
 
@@ -44,42 +35,35 @@ String& String::operator=(const String& rhs_s) {
     if (this != &rhs_s) {
         delete[] adat;
         len = rhs_s.len;
-        // Helyet foglalunk
         adat = new char[len+1];
-        // Bemásoljuk a stringet, ami le van zárva 0-val így használható az strcpy is
         strcpy(adat, rhs_s.adat);
     }
     return *this;
 }
 
-/*
+
 // [] operátorok: egy megadott indexû elem REFERENCIÁJÁVAL térnek vissza.
 // indexhiba esetén dobjon egy const char * típusú hibát!
 char& String::operator[](unsigned int idx) {
     if (idx >= len) throw "String: indexelesi hiba";
-    return pData[idx];
+    return adat[idx];
 }
 
 const char& String::operator[](unsigned int idx) const {
     if (idx >= len) throw "String: indexelesi hiba";
-    return pData[idx];
+    return adat[idx];
 }
 
 // + operátor, ami két stringet ad össze (concatString)
 String String::operator+(const String& rhs_s) const {
-    String temp;		// ide kerül az eredmény
-    // Meghatározza az új string hosszát
+    String temp;
     temp.len = len + rhs_s.len;
-    // Felszabadítja a temp adattaerületét
-    delete []temp.pData;
-    // lefoglalja a memóriát az új stringnek.
-    temp.pData = new char[temp.len+1];
-    // Az elejére bemásolja az elsõ stringet
-    strcpy(temp.pData, pData);
-    // Bemásolja a második stringet.
-    strcat(temp.pData, rhs_s.pData);
+    delete []temp.adat;
+    temp.adat = new char[temp.len+1];
+    strcpy(temp.adat, adat);
+    strcat(temp.adat, rhs_s.adat);
 
-    return temp;		// visszatér az eredménnyel
+    return temp;
 
 }
 // << operator, ami kiír az ostream-re
@@ -91,18 +75,22 @@ std::ostream& operator<<(std::ostream& os, const String& s0) {
 // << operátor, ami beolvas az istreamrõl egy szót
 std::istream& operator>>(std::istream& is, String& s0) {
     unsigned char ch;
-    s0 = String("");            // üres string, ehhez fûzünk hozzá
-	std::ios_base::fmtflags fl = is.flags(); // eltesszük a régi flag-eket
-	is.setf(ios_base::skipws);			// az elején eldobjuk a ws-t
+    s0 = String("");
+	std::ios_base::fmtflags fl = is.flags();
+	is.setf(ios_base::skipws);
     while (is >> ch) {
-	    is.unsetf(ios_base::skipws);	// utána pedig már nem
+	    is.unsetf(ios_base::skipws);
         if (isspace(ch)) {
-            is.putback(ch);             // na ezt nem kérjük
+            is.putback(ch);
             break;
         } else {
-            s0 = s0 + ch;               // végére fûzzük a karaktert
+            s0 = s0 + ch;
         }
     }
-	is.setf(fl);						// visszaállítjuk a flag-eket
+	is.setf(fl);
     return is;
-}*/
+}
+
+bool String::operator==(const String& rhs_s) const{
+    return strcmp(this->c_str(), rhs_s.c_str()) == 0;
+}

@@ -11,8 +11,8 @@ public:
     Telefonkonyv() : elemek(nullptr), meret(0), kapacitas(0) {}
     ~Telefonkonyv();
 
-    Telefonkonyv(const Telefonkonyv& masik): elemek(nullptr), meret(0), kapacitas(0){};
-    Telefonkonyv& operator=(const Telefonkonyv& masik){return *this;}
+    Telefonkonyv(const Telefonkonyv& masik);
+    Telefonkonyv& operator=(const Telefonkonyv& masik);
 
     bool hozzaad(Kontakt * uj);
     bool torol(int id);

@@ -5,12 +5,11 @@
 
 class Menu{
     Telefonkonyv tk;
-
-    void menuKiir();
+    void menuKiir() const;
     void adatFelvetel();
     void adatModosit();
     void adatTorol();
-    void listazas();
+    void listazas() const;
     void keresesInditasa();
 public:
     void indit();

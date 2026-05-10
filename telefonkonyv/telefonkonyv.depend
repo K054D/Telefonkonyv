@@ -13,3 +13,85 @@
 1777892242 d:\bme\2. félév\prog2\nhf-git\telefonkonyv\telefonkonyv\string.h
 	<iostream>
 
+1778428453 source:d:\bme\prog2\telefonkonyv\telefonkonyv\main.cpp
+	<iostream>
+	<stdexcept>
+	"menu.h"
+
+1778429051 d:\bme\prog2\telefonkonyv\telefonkonyv\telefonkonyv.h
+	"kontakt.h"
+
+1778412660 d:\bme\prog2\telefonkonyv\telefonkonyv\kontakt.h
+	"string.h"
+	<iostream>
+
+1778429471 d:\bme\prog2\telefonkonyv\telefonkonyv\string.h
+	<iostream>
+
+1778428464 d:\bme\prog2\telefonkonyv\telefonkonyv\menu.h
+	"telefonkonyv.h"
+
+1778428223 d:\bme\prog2\telefonkonyv\telefonkonyv\barat.h
+	"kontakt.h"
+
+1778428335 d:\bme\prog2\telefonkonyv\telefonkonyv\ceg.h
+	"kontakt.h"
+
+1777720466 source:d:\bme\prog2\telefonkonyv\telefonkonyv\kontakt.cpp
+
+1774781044 source:d:\bme\prog2\telefonkonyv\telefonkonyv\memtrace.cpp
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	<ctype.h>
+	"memtrace.h"
+
+1774781044 d:\bme\prog2\telefonkonyv\telefonkonyv\memtrace.h
+	<new>
+	<cstdio>
+	<stdlib.h>
+	<iostream>
+	<fstream>
+	<sstream>
+	<vector>
+	<list>
+	<map>
+	<algorithm>
+	<functional>
+	<memory>
+	<iomanip>
+	<locale>
+	<typeinfo>
+	<ostream>
+	<stdexcept>
+	<ctime>
+	<iterator>
+	<regex>
+
+1778428800 source:d:\bme\prog2\telefonkonyv\telefonkonyv\barat.cpp
+	"barat.h"
+
+1778428805 source:d:\bme\prog2\telefonkonyv\telefonkonyv\ceg.cpp
+	"ceg.h"
+
+1778429641 source:d:\bme\prog2\telefonkonyv\telefonkonyv\menu.cpp
+	"menu.h"
+	"barat.h"
+	"ceg.h"
+	<iostream>
+	<cstring>
+
+1778429512 source:d:\bme\prog2\telefonkonyv\telefonkonyv\string.cpp
+	<iostream>
+	<cstring>
+	"memtrace.h"
+	"string.h"
+
+1778429553 source:d:\bme\prog2\telefonkonyv\telefonkonyv\telefonkonyv.cpp
+	"telefonkonyv.h"
+	"barat.h"
+	"ceg.h"
+	<fstream>
+	<cstring>
+

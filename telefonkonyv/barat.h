@@ -11,9 +11,9 @@ public:
 
 
     void kiir() const override;
-    void fajlbaIr(ostream &os) const override;
+    void fajlbaIr(std::ostream &os) const override;
 
-    Kontakt* clone() const override{return nullptr;}
+    Kontakt* clone() const override;
 
     ~Barat(){}
 
