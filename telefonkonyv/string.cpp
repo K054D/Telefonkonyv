@@ -1,5 +1,6 @@
 #include <iostream>             // Kiíratáshoz
 #include <cstring>              // Stringmûveletekhez
+#include <stdexcept>
 
 #include "string.h"
 #include "memtrace.h"
@@ -46,12 +47,12 @@ String& String::operator=(const String& rhs_s) {
 // [] operátorok: egy megadott indexû elem REFERENCIÁJÁVAL térnek vissza.
 // indexhiba esetén dobjon egy const char * típusú hibát!
 char& String::operator[](unsigned int idx) {
-    if (idx >= len) throw "String: indexelesi hiba";
+    if (idx >= len) throw std::out_of_range("String: indexelesi hiba");
     return adat[idx];
 }
 
 const char& String::operator[](unsigned int idx) const {
-    if (idx >= len) throw "String: indexelesi hiba";
+    if (idx >= len) throw std::out_of_range("String: indexelesi hiba");
     return adat[idx];
 }
 

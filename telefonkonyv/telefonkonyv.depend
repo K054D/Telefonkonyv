@@ -20,17 +20,17 @@
 	"menu.h"
 	"memtrace.h"
 
-1779037102 d:\bme\prog2\telefonkonyv\telefonkonyv\telefonkonyv.h
+1779038217 d:\bme\prog2\telefonkonyv\telefonkonyv\telefonkonyv.h
 	"kontakt.h"
 
-1779037008 d:\bme\prog2\telefonkonyv\telefonkonyv\kontakt.h
+1779038288 d:\bme\prog2\telefonkonyv\telefonkonyv\kontakt.h
 	<iostream>
 	"string.h"
 
 1778429471 d:\bme\prog2\telefonkonyv\telefonkonyv\string.h
 	<iostream>
 
-1779036136 d:\bme\prog2\telefonkonyv\telefonkonyv\menu.h
+1779039440 d:\bme\prog2\telefonkonyv\telefonkonyv\menu.h
 	"telefonkonyv.h"
 
 1779037027 d:\bme\prog2\telefonkonyv\telefonkonyv\barat.h
@@ -79,7 +79,7 @@
 	"ceg.h"
 	"memtrace.h"
 
-1779037297 source:d:\bme\prog2\telefonkonyv\telefonkonyv\menu.cpp
+1779039608 source:d:\bme\prog2\telefonkonyv\telefonkonyv\menu.cpp
 	"menu.h"
 	"barat.h"
 	"ceg.h"
@@ -87,13 +87,14 @@
 	<cstring>
 	"memtrace.h"
 
-1779036260 source:d:\bme\prog2\telefonkonyv\telefonkonyv\string.cpp
+1779038485 source:d:\bme\prog2\telefonkonyv\telefonkonyv\string.cpp
 	<iostream>
 	<cstring>
+	<stdexcept>
 	"string.h"
 	"memtrace.h"
 
-1779037486 source:d:\bme\prog2\telefonkonyv\telefonkonyv\telefonkonyv.cpp
+1779038226 source:d:\bme\prog2\telefonkonyv\telefonkonyv\telefonkonyv.cpp
 	<fstream>
 	<cstring>
 	"telefonkonyv.h"

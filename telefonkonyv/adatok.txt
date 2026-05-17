@@ -17,3 +17,4 @@ B;16;Horváth Eszter;Sopron, Várkerület 10;Eszti;06701115555;
 C;17;Bútorgyár Kft.;Zalaegerszeg, Kossuth Lajos utca 18;0692444555;0692444556;
 B;18;Németh Balázs;Szombathely, Fő tér 9;Balázs;06308881111;
 C;19;Kreatív Reklámügynökség;Budapest, Andrássy út 100;0615556666;0615556667;
+B;20;Ferenc József;Ausztria;Ferike;06301234567;

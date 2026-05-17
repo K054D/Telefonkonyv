@@ -11,6 +11,7 @@ class Menu{
     void adatTorol();
     void listazas() const;
     void keresesInditasa() const;
+    bool bekerSzam(const char* uzenet, int& kimenet) const;
 public:
     void indit();
 };

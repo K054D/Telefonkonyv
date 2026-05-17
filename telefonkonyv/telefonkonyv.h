@@ -21,6 +21,7 @@ public:
     bool fajlbaMent(const char* fajlnev) const;
 
     Kontakt* getKontakt(int id);
+    int getMeret()const {return meret;}
 
     template <typename Predicate>
     void keres(Predicate feltetel)const{

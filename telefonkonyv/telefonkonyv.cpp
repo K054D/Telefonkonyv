@@ -102,6 +102,9 @@ bool Telefonkonyv::fajlbolToltes(const char* fajlnev){
 
     while(fajl.getline(sorbuffer, 512)){
 
+        if (strlen(sorBuffer) > 0 && sorBuffer[strlen(sorBuffer) - 1] == '\r') {
+            sorBuffer[strlen(sorBuffer) - 1] = '\0';
+        }
         if (strlen(sorbuffer) < 2) continue; //Üres sor kihagyása
         char tipus = sorbuffer[0];
         strtok(sorbuffer, ";");

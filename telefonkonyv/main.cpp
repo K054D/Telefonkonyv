@@ -13,7 +13,12 @@ int main() {
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
 
-    Menu m;
-    m.indit();
+    try {
+        Menu m;
+        m.indit();
+    }
+    catch (const std::exception& e) {
+        cerr << "\nVegzetes hiba tortent a program futasa soran: " << e.what() << endl;
+    }
     return 0;
 }

@@ -7,17 +7,21 @@
 
 
 void Menu::indit(){
-    tk.fajlbolToltes("adatok.txt");
+    if (!tk.fajlbolToltes("adatok.txt")) {
+        std::cout << "Hiba: Nem sikerult megnyitni a fájlt!\n";
+    }
 
     int valasztas = -1;
     while(valasztas != 0){
         system("cls");
         menuKiir();
-        std::cout << "Valasszon egy menupontot: ";
-        std::cin >> valasztas;
 
-        // A \n-t törölje ki az input bufferből
-        std::cin.ignore(INT_MAX,'\n');
+        if (!bekerSzam("Valasszon egy menupontot: ", valasztas)) {
+            std::cout << "Nyomjon ENTER-t a folytatashoz...";
+            std::cin.get();
+            valasztas = -1;
+            continue;
+        }
 
         switch(valasztas){
             case 1 :
@@ -49,8 +53,11 @@ void Menu::indit(){
         }
     }
 
-
-    tk.fajlbaMent("adatok.txt");
+    if (!tk.fajlbaMent("adatok.txt")) {
+        std::cout << "Hiba: Nem sikerult elmenteni az adatokat a fajlba!\n";
+    } else {
+        std::cout << "Adatok sikeresen elmentve.\n";
+    }
 }
 
 void Menu::menuKiir() const{
@@ -65,12 +72,16 @@ void Menu::menuKiir() const{
 }
 
 void Menu::listazas() const{
+    if (tk.getMeret() == 0) {
+        std::cout << "A telefonkonyv jelenleg ures!\n";
+        return;
+    }
     tk.listaz();
 }
 
 void Menu::adatFelvetel(){
     char tipus;
-    std::cout << "Milyen tipusu kontaktot szeretne felvenni? (B- Barat // C- Ceg): ";
+    std::cout << "Milyen tipusu kontaktot szeretne felvenni? (B - Barat // C - Ceg): ";
     std::cin >> tipus;
 
     std::cin.ignore(INT_MAX,'\n');
@@ -79,11 +90,13 @@ void Menu::adatFelvetel(){
         std::cout << "Hibas tipus!";
         return;
     }
-
     int id;
-    std::cout << "Adja meg a kontakt ID-jet: ";
-    std::cin >> id;
-    std::cin.ignore(INT_MAX,'\n');
+    if (!bekerSzam("Adja meg a kontakt ID-jet: ", id)) return;
+
+    if (tk.getKontakt(id) != nullptr) {
+        std::cout << "Hiba: Ezzel az ID-vel mar letezik kontakt!\n";
+        return;
+    }
 
     char nev[256], cim[256];
     std::cout << "Nev: ";
@@ -118,14 +131,12 @@ void Menu::keresesInditasa() const{
    std::cout << "Valasszon keresesi modot: ";
 
    int opcio;
-   std::cin >> opcio;
-   std::cin.ignore(INT_MAX,'\n');
+   if (!bekerSzam("Valasszon keresesi modot: ", opcio)) return;
 
    if(opcio == 1){
         int keresettID;
         std::cout << "Adja meg a keresett ID-t: ";
-        std::cin >> keresettID;
-        std::cin.ignore(INT_MAX,'\n');
+        if (!bekerSzam("Adja meg a keresett ID-t: ", keresettID)) return;
 
         system("cls");
         std::cout << "Kereses eredmenye:\n";
@@ -161,9 +172,7 @@ void Menu::keresesInditasa() const{
 
 void Menu::adatTorol(){
     int id;
-    std::cout << "Adja meg a torlendo kontakt ID-jet: ";
-    std::cin >> id;
-    std::cin.ignore(INT_MAX,'\n');
+    if (!bekerSzam("Adja meg a torlendo kontakt ID-jet: ", id)) return;
 
     Kontakt* torlendo = tk.getKontakt(id);
     if (torlendo == nullptr) {
@@ -194,9 +203,7 @@ void Menu::adatTorol(){
 
 void Menu::adatModosit(){
     int id;
-    std::cout << "Adja meg a modositando kontakt ID-jet: ";
-    std::cin >> id;
-    std::cin.ignore(INT_MAX,'\n');
+    if (!bekerSzam("Adja meg a modositando kontakt ID-jet: ", id)) return;
 
     Kontakt* modositando = tk.getKontakt(id);
 
@@ -239,4 +246,16 @@ void Menu::adatModosit(){
         c->setFax(ujFszam);
     }
     std::cout << "\nA(z) " << id << " ID-ju kontakt sikeresen modositva!\n";
+}
+
+bool Menu::bekerSzam(const char* uzenet, int& kimenet) const {
+    std::cout << uzenet;
+    if (!(std::cin >> kimenet)) {
+        std::cin.clear();
+        std::cin.ignore(INT_MAX, '\n');
+        std::cout << "Hibas bemenet! Szamot adjon meg.\n";
+        return false;
+    }
+    std::cin.ignore(INT_MAX, '\n');
+    return true;
 }
