@@ -40,7 +40,7 @@
 		<Unit filename="ceg.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="kontakt.cpp" />
+		<Unit filename="gtest_lite.h" />
 		<Unit filename="kontakt.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
