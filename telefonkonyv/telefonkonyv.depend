@@ -13,28 +13,30 @@
 1777892242 d:\bme\2. félév\prog2\nhf-git\telefonkonyv\telefonkonyv\string.h
 	<iostream>
 
-1778428453 source:d:\bme\prog2\telefonkonyv\telefonkonyv\main.cpp
+1779036612 source:d:\bme\prog2\telefonkonyv\telefonkonyv\main.cpp
 	<iostream>
 	<stdexcept>
+	<windows.h>
 	"menu.h"
+	"memtrace.h"
 
-1778429051 d:\bme\prog2\telefonkonyv\telefonkonyv\telefonkonyv.h
+1779037102 d:\bme\prog2\telefonkonyv\telefonkonyv\telefonkonyv.h
 	"kontakt.h"
 
-1778412660 d:\bme\prog2\telefonkonyv\telefonkonyv\kontakt.h
-	"string.h"
+1779037008 d:\bme\prog2\telefonkonyv\telefonkonyv\kontakt.h
 	<iostream>
+	"string.h"
 
 1778429471 d:\bme\prog2\telefonkonyv\telefonkonyv\string.h
 	<iostream>
 
-1778428464 d:\bme\prog2\telefonkonyv\telefonkonyv\menu.h
+1779036136 d:\bme\prog2\telefonkonyv\telefonkonyv\menu.h
 	"telefonkonyv.h"
 
-1778428223 d:\bme\prog2\telefonkonyv\telefonkonyv\barat.h
+1779037027 d:\bme\prog2\telefonkonyv\telefonkonyv\barat.h
 	"kontakt.h"
 
-1778428335 d:\bme\prog2\telefonkonyv\telefonkonyv\ceg.h
+1779037444 d:\bme\prog2\telefonkonyv\telefonkonyv\ceg.h
 	"kontakt.h"
 
 1777720466 source:d:\bme\prog2\telefonkonyv\telefonkonyv\kontakt.cpp
@@ -69,29 +71,33 @@
 	<iterator>
 	<regex>
 
-1778428800 source:d:\bme\prog2\telefonkonyv\telefonkonyv\barat.cpp
+1779036200 source:d:\bme\prog2\telefonkonyv\telefonkonyv\barat.cpp
 	"barat.h"
+	"memtrace.h"
 
-1778428805 source:d:\bme\prog2\telefonkonyv\telefonkonyv\ceg.cpp
+1779036207 source:d:\bme\prog2\telefonkonyv\telefonkonyv\ceg.cpp
 	"ceg.h"
+	"memtrace.h"
 
-1778429641 source:d:\bme\prog2\telefonkonyv\telefonkonyv\menu.cpp
+1779037297 source:d:\bme\prog2\telefonkonyv\telefonkonyv\menu.cpp
 	"menu.h"
 	"barat.h"
 	"ceg.h"
 	<iostream>
 	<cstring>
+	"memtrace.h"
 
-1778429512 source:d:\bme\prog2\telefonkonyv\telefonkonyv\string.cpp
+1779036260 source:d:\bme\prog2\telefonkonyv\telefonkonyv\string.cpp
 	<iostream>
 	<cstring>
-	"memtrace.h"
 	"string.h"
+	"memtrace.h"
 
-1778429553 source:d:\bme\prog2\telefonkonyv\telefonkonyv\telefonkonyv.cpp
+1779037486 source:d:\bme\prog2\telefonkonyv\telefonkonyv\telefonkonyv.cpp
+	<fstream>
+	<cstring>
 	"telefonkonyv.h"
 	"barat.h"
 	"ceg.h"
-	<fstream>
-	<cstring>
+	"memtrace.h"
 

@@ -1,8 +1,9 @@
 #ifndef KONTAKT_H_INCLUDED
 #define KONTAKT_H_INCLUDED
 
-#include "string.h"
 #include <iostream>
+#include "string.h"
+
 
 class Kontakt{
 protected:
@@ -17,7 +18,11 @@ public:
     virtual Kontakt* clone() const = 0;
 
     const String& getNev() const { return nev; }
-    const int getId() const { return id; }
+    const String& getCim() const { return cim; }
+    int getId() const { return id; }
+
+    void setNev(const char* ujNev) { nev = ujNev; }
+    void setCim(const char* ujCim) { cim = ujCim; }
 
     virtual ~Kontakt(){};
 

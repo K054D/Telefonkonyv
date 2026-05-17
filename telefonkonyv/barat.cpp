@@ -1,4 +1,5 @@
 #include "barat.h"
+#include "memtrace.h"
 
 using namespace std;
 

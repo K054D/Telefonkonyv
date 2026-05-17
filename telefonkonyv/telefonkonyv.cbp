@@ -32,40 +32,30 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="barat.cpp">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
+		<Unit filename="barat.cpp" />
 		<Unit filename="barat.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="ceg.cpp">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
+		<Unit filename="ceg.cpp" />
 		<Unit filename="ceg.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="kontakt.cpp">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
+		<Unit filename="kontakt.cpp" />
 		<Unit filename="kontakt.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="main.cpp" />
-		<Unit filename="menu.cpp">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
+		<Unit filename="memtrace.cpp" />
+		<Unit filename="memtrace.h" />
+		<Unit filename="menu.cpp" />
 		<Unit filename="menu.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="string.cpp">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
+		<Unit filename="string.cpp" />
 		<Unit filename="string.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="telefonkonyv.cpp">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
+		<Unit filename="telefonkonyv.cpp" />
 		<Unit filename="telefonkonyv.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>

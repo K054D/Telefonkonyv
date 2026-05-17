@@ -10,7 +10,7 @@ class Menu{
     void adatModosit();
     void adatTorol();
     void listazas() const;
-    void keresesInditasa();
+    void keresesInditasa() const;
 public:
     void indit();
 };

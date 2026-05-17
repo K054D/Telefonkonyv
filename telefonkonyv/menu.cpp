@@ -70,7 +70,7 @@ void Menu::listazas() const{
 
 void Menu::adatFelvetel(){
     char tipus;
-    std::cout << "Milyen típusu kontaktot szeretne felvenni? (B- Barat // C- Ceg): ";
+    std::cout << "Milyen tipusu kontaktot szeretne felvenni? (B- Barat // C- Ceg): ";
     std::cin >> tipus;
 
     std::cin.ignore(INT_MAX,'\n');
@@ -110,16 +110,53 @@ void Menu::adatFelvetel(){
     }
 }
 
-void Menu::keresesInditasa(){
-    char keresett[256];
-    std::cout << "Ird be a keresett nevet (pontos egyezes): ";
-    std::cin.getline(keresett, 256);
+void Menu::keresesInditasa() const{
+   std::cout << "*** Keresesi feltetelek ***\n";
+   std::cout << "1. Kereses ID alapjan\n";
+   std::cout << "2. Kereses nev alapjan (pontos egyezessel)\n";
+   std::cout << "3. Kereses cim alapjan\n";
+   std::cout << "Valasszon keresesi modot: ";
 
-    std::cout << "*** Eredmeny: ***\n";
+   int opcio;
+   std::cin >> opcio;
+   std::cin.ignore(INT_MAX,'\n');
 
-    tk.keres([&keresett](const Kontakt& k) {
-        return strcmp(k.getNev().c_str(), keresett) == 0;
-    });
+   if(opcio == 1){
+        int keresettID;
+        std::cout << "Adja meg a keresett ID-t: ";
+        std::cin >> keresettID;
+        std::cin.ignore(INT_MAX,'\n');
+
+        system("cls");
+        std::cout << "Kereses eredmenye:\n";
+        tk.keres([keresettID](const Kontakt& k){
+            return k.getId() == keresettID;
+        });
+   }
+   else if(opcio == 2){
+        char keresettNev[256];
+        std::cout << "Adja meg a keresett nevet (pontos egyezes): ";
+        std::cin.getline(keresettNev, 256);
+
+        system("cls");
+        std::cout << "Kereses eredmenye:\n";
+        tk.keres([&keresettNev](const Kontakt& k){
+            return strcmp(k.getNev().c_str(), keresettNev) == 0;
+        });
+   }
+    else if(opcio == 3){
+        char keresettCim[256];
+        std::cout << "Adja meg a keresett cimet: ";
+        std::cin.getline(keresettCim, 256);
+
+        system("cls");
+        std::cout << "Kereses eredmenye:\n";
+        tk.keres([&keresettCim](const Kontakt& k){
+            return strstr(k.getCim().c_str(), keresettCim) != nullptr;
+        });
+   }else{
+        std::cout << "Ervenytelen opcio!\n";
+   }
 }
 
 void Menu::adatTorol(){
@@ -128,11 +165,31 @@ void Menu::adatTorol(){
     std::cin >> id;
     std::cin.ignore(INT_MAX,'\n');
 
-    if(tk.torol(id)){
-        std::cout << "A(z)" << id << "ID-ju kontakt torolve lett";
-    }else{
-       std::cout << "Nem talalhato kontakt ezzel az ID-vel!";
+    Kontakt* torlendo = tk.getKontakt(id);
+    if (torlendo == nullptr) {
+        std::cout << "Nem talalhato kontakt ezzel az ID-vel!\n";
+        return;
     }
+
+    std::cout << "\n*** Torlendo kontakt adatai ***\n";
+    torlendo->kiir();
+
+
+    char valasz;
+    std::cout << "\nBiztosan torolni szeretne a kontaktot? (i/n): ";
+    std::cin >> valasz;
+    std::cin.ignore(INT_MAX, '\n');
+    if (valasz == 'i' || valasz == 'I') {
+        if (tk.torol(id)) {
+            std::cout << "A(z) " << id << " ID-ju kontakt torolve lett.\n";
+        } else {
+            std::cout << "Hiba a torles soran!\n";
+        }
+    } else {
+        std::cout << "Torles megszakitva. A kontakt megmaradt.\n";
+    }
+
+
 }
 
 void Menu::adatModosit(){
@@ -141,10 +198,45 @@ void Menu::adatModosit(){
     std::cin >> id;
     std::cin.ignore(INT_MAX,'\n');
 
-    if(tk.torol(id)){
-        std::cout << "Kontakt megtalalva, add meg az uj kontakt adatait!\n";
-        adatFelvetel();
-    }else{
-       std::cout << "Nem talalhato kontakt ezzel az ID-vel!";
+    Kontakt* modositando = tk.getKontakt(id);
+
+    if (modositando == nullptr) {
+        std::cout << "Nem talalhato kontakt ezzel az ID-vel!\n";
+        return;
     }
+
+    std::cout << "\n*** Modositando kontakt jelenlegi adatai ***\n";
+    modositando->kiir();
+
+    std::cout << "\n*** Uj adatok megadasa ***\n";
+    char ujNev[256], ujCim[256];
+
+    std::cout << "Uj nev: ";
+    std::cin.getline(ujNev, 256);
+    std::cout << "Uj cim: ";
+    std::cin.getline(ujCim, 256);
+
+    modositando->setNev(ujNev);
+    modositando->setCim(ujCim);
+
+    if (Barat* b = dynamic_cast<Barat*>(modositando)) {
+        char ujBnev[256], ujPszam[256];
+        std::cout << "Uj becenev: ";
+        std::cin.getline(ujBnev, 256);
+        std::cout << "Uj privat szam: ";
+        std::cin.getline(ujPszam, 256);
+
+        b->setBecenev(ujBnev);
+        b->setPrivatSzam(ujPszam);
+    }else if (Ceg* c = dynamic_cast<Ceg*>(modositando)) {
+        char ujMszam[256], ujFszam[256];
+        std::cout << "Uj munkahelyi szam: ";
+        std::cin.getline(ujMszam, 256);
+        std::cout << "Uj fax szam: ";
+        std::cin.getline(ujFszam, 256);
+
+        c->setMunkahelyiSzam(ujMszam);
+        c->setFax(ujFszam);
+    }
+    std::cout << "\nA(z) " << id << " ID-ju kontakt sikeresen modositva!\n";
 }

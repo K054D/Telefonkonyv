@@ -1,8 +1,8 @@
 #include <iostream>             // Kiíratáshoz
 #include <cstring>              // Stringmûveletekhez
 
-#include "memtrace.h"           // a standard headerek után kell lennie
 #include "string.h"
+#include "memtrace.h"
 
 using std::cin;
 using std::ios_base;
@@ -18,6 +18,7 @@ String::String(char ch) {
 
 // Konstruktor: egy nullával lezárt char sorozatból (createStringFromCharStr)
 String::String(const char *p) {
+    if(p == nullptr) p = "";
     len = strlen(p);
     adat = new char[len+1];
     strcpy(adat, p);

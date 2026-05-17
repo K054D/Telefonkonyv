@@ -13,6 +13,9 @@ public:
     void kiir() const override;
     void fajlbaIr(std::ostream &os) const override;
 
+    void setMunkahelyiSzam(const char* ujMszam) { munkahelyiszam = ujMszam; }
+    void setFax(const char* ujFax) { faxszam = ujFax; }
+
     Kontakt* clone() const override;
 
     ~Ceg(){}

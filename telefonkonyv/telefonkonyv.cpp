@@ -1,8 +1,10 @@
+#include <fstream>
+#include <cstring>
+
 #include "telefonkonyv.h"
 #include "barat.h"
 #include "ceg.h"
-#include <fstream>
-#include <cstring>
+#include "memtrace.h"
 
 Telefonkonyv::~Telefonkonyv(){
     for(int i = 0; i < meret; ++i){
@@ -45,13 +47,15 @@ Telefonkonyv& Telefonkonyv::operator=(const Telefonkonyv& masik){
 
 bool Telefonkonyv::hozzaad(Kontakt * uj){
     if(meret == kapacitas){
-        int ujkapacitas = (kapacitas==0)? 2 : kapacitas*2;
+        int ujkapacitas = (kapacitas==0)? 10 : kapacitas*2;
         Kontakt** ujelemek = new Kontakt*[ujkapacitas];
 
-        for(int i = 0; i < meret; ++i){
-            delete elemek[i];
+        for (int i = 0; i < meret; ++i) {
+            ujelemek[i] = elemek[i];
         }
-        delete[] elemek;
+        if (elemek != nullptr) {
+            delete[] elemek;
+        }
 
         kapacitas = ujkapacitas;
         elemek = ujelemek;
@@ -87,7 +91,6 @@ void Telefonkonyv::listaz() const{
     std::cout << "*** TELEFONKONYY ("<<meret<<" db rekord) ***"<<std::endl;
     for(int i = 0; i < meret; ++i){
         elemek[i]->kiir();
-        std::cout << "*************************************" << std::endl;
     }
 }
 
@@ -98,13 +101,21 @@ bool Telefonkonyv::fajlbolToltes(const char* fajlnev){
     char sorbuffer[512];
 
     while(fajl.getline(sorbuffer, 512)){
-        char tipus = sorbuffer[0];
 
+        if (strlen(sorbuffer) < 2) continue; //Üres sor kihagyása
+        char tipus = sorbuffer[0];
         strtok(sorbuffer, ";");
 
-        int id = std::stoi(strtok(nullptr, ";"));
+        char* str_id = strtok(nullptr, ";");
         char* nev = strtok(nullptr, ";");
         char* cim = strtok(nullptr, ";");
+
+        if (str_id == nullptr || nev  == nullptr || cim  == nullptr ) {
+            std::cout << "HIBAS SOR A FAJLBAN\n";
+            continue;
+        }
+
+        int id = std::stoi(str_id);
 
         if(tipus == 'B'){
             char* bnev = strtok(nullptr, ";");
@@ -125,7 +136,7 @@ bool Telefonkonyv::fajlbolToltes(const char* fajlnev){
 }
 
 
-bool Telefonkonyv::fajlbaMent(const char* fajlnev){
+bool Telefonkonyv::fajlbaMent(const char* fajlnev) const{
     std::ofstream fajl(fajlnev);
     if(!fajl.is_open()) return false;
 
@@ -137,5 +148,13 @@ bool Telefonkonyv::fajlbaMent(const char* fajlnev){
     return true;
 }
 
+Kontakt* Telefonkonyv::getKontakt(int id){
+    for (int i = 0; i < meret; ++i) {
+        if (elemek[i]->getId() == id) {
+            return elemek[i];
+        }
+    }
+    return nullptr;
+}
 
 

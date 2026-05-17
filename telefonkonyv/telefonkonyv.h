@@ -18,14 +18,21 @@ public:
     bool torol(int id);
     void listaz() const;
     bool fajlbolToltes(const char* fajlnev);
-    bool fajlbaMent(const char* fajlnev);
+    bool fajlbaMent(const char* fajlnev) const;
+
+    Kontakt* getKontakt(int id);
 
     template <typename Predicate>
-    void keres(Predicate feltetel){
+    void keres(Predicate feltetel)const{
+        int talalatok = 0;
         for(int i = 0; i<meret; ++i){
             if(feltetel(*elemek[i])){
                 elemek[i]->kiir();
+                talalatok++;
             }
+        }
+        if(talalatok == 0){
+            std::cout << "Nem talalhato a feltetelnek megfelelo elem!\n";
         }
     }
 

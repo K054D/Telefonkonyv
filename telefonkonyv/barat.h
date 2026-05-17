@@ -13,6 +13,9 @@ public:
     void kiir() const override;
     void fajlbaIr(std::ostream &os) const override;
 
+    void setBecenev(const char* ujBnev) { becenev = ujBnev; }
+    void setPrivatSzam(const char* ujPszam) { privatszam = ujPszam; }
+
     Kontakt* clone() const override;
 
     ~Barat(){}

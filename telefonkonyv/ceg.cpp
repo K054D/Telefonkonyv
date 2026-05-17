@@ -1,4 +1,5 @@
 #include "ceg.h"
+#include "memtrace.h"
 
 using namespace std;
 
